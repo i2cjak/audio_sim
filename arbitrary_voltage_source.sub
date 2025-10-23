@@ -1,0 +1,12 @@
+.subckt twosource n1 n2 PARAMS: waveform_file="file.txt"
+
+* filesource instance
+A1 %vd([n1 n2]) filesrc
+
+* filesource interpolating model 
+.model filesrc filesource (file={waveform_file};"my-source.txt"
++ amploffset=[0] amplscale=[1]
++ timeoffset=0 timescale=1
++ timerelative=false amplstep=false)
+
+.ends
